@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+2|Courier+Prime|Lora&display=swap');
+
+* {
+  border: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 20px;
+}
+
+button {
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  background: lavender;
+  color: black;
+  box-shadow: 0 2px 6px -4px black;
+  font-weight: bold;
+}
+
+button:disabled {
+  background: #888888;
+  border: 2px solid white;
+  color: white;
+}
+
+.vert-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.horiz-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.stretch {
+  flex: 1 0 auto;
+}
+
+#app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: lavender;
+}
+
+#wizard {
+  font-family: 'Baloo 2', cursive;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  transition: opacity 1s linear;
+}
+
+#wizard.complete {
+  opacity: 0;
+}
+
+.stage {
+  position: fixed;
+  top: 50%;
+  left: -50%;
+  transition: left 1s ease;
+  transform: translate(-50%, -50%);  
+  background: white;
+  box-shadow: 0 3px 12px -6px black;
+  width: 720px;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stage.active ~ .stage {
+  left: 150%;
+  transform: translate(0, 0);
+}
+
+.stage p + p {
+  margin-top: 1em;
+}
+
+.stage.active {
+  transition: left 1s ease;
+  left: 50%;
+}
+
+.stage header,
+.stage section,
+.stage footer {
+  padding: 1rem;
+}
+
+.stage header {
+  background: purple;
+  color: white;
+}
+
+.stage footer {
+  background: purple;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.stage section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: hidden;
+}
+
+#wizard form div:not(:last-of-type) {
+  margin-bottom: 1rem;
+}
+
+#wizard form .horiz-flex :not(:last-child) {
+  margin-right: 1em;
+}
+
+#wizard form label {
+  align-self: flex-end;
+}
+
+#wizard form input[type=text] {
+  border-bottom: 2px solid #55dd55;
+  font-size: 1em;
+  padding: 0.5em;
+}
+
+#wizard form input:invalid {
+  border-color: #dd5555;
+}
+
+.stage .message h2 {
+  font-size: 1.1rem;
+  margin: 1em 0 0.5em;
+  padding: .5rem;
+  border: 1px solid #55dd55;
+}
+
+.suggestions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 3px;
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.suggestions span {
+  border: 1px solid black;
+  font-family: 'Courier Prime', monospace;
+  background: #333;
+  color: white;
+  padding: 0.25em 0.5em;
+  cursor: pointer;
+}
+
+.suggestions span:hover {
+  background: lavender;
+}
+
+.definition {
+  border: 1px solid #888;
+}
+
+.definition h3 {
+  font-family: 'Courier Prime', monospace;
+  background: #333;
+  color: white;
+  padding: 0.5rem;
+  border-bottom: 1px solid #888;
+}
+
+.definition p {
+  font-family: 'Lora', serif;
+  padding: 0.5rem;
+}
+
+#game {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#word-chain {
+  position: absolute;
+  width: 720px;
+  max-height: 100vh;
+  overflow-y: scroll;
+  top: 50%;
+  left: 50%;
+  transition: transform 1s ease;
+  transform: translate(-50%, -50%);
+}
+
+#word-chain .definition {
+  box-shadow: 0 4px 12px -6px black;
+}
+
+#word-chain .definition span {
+  display: inline-block;
+  border: 1px solid #55dd55;
+  background: white;
+  padding: 0.1rem 0.25rem;
+  cursor: pointer;
+  margin: 0.1rem 0;
+}
+
+#word-chain .definition:not(:last-of-type) {
+  margin-bottom: 1rem;
+}

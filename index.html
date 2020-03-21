@@ -1,0 +1,119 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Page Title</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div id="wizard">
+        <!-- Explain the game -->
+        <div class="stage introduction active">
+          <header>
+            <h2>Welcome to <span class="app-name">Seven Degrees of Definition</span></h2>
+          </header>
+          <section>
+            <p>
+              The goal of this game is to make a chain of words using definitions provided by Merriam-Webster.  
+            </p>
+            <p>
+              One player chooses two words, a <b>first</b> word and a <b>last</b> word.
+            </p>
+            <p>
+              The other player is given with the definition provided by the first word.  They can click any word in the definition to fetch another definition, and so on until they click the last word.
+            </p>
+          </section>
+          <footer>
+            <button class="advance">GOT IT</button>
+          </footer>
+        </div>
+        <!-- Ask the players to enter their names -->
+        <div class="stage set-player-names">
+          <header>
+            <h2>Who is playing today?</h2>
+          </header>
+          <section>
+            <form id="set-players" class="vert-flex">
+              <div class="horiz-flex">
+                <label for="player-one">Player One</label>
+                <input placeholder="Enter a name" required class="stretch" type="text" id="player-one">
+              </div>
+              <div class="horiz-flex">
+                <label for="player-two">Player Two</label>
+                <input placeholder="Enter a name"  required class="stretch" type="text" id="player-two">
+              </div>
+            </form>
+          </section>
+          <footer>
+            <button disabled class="advance">LET'S GET STARTED</button>
+          </footer>
+        </div>
+        <!-- Ask for some privacy for the first picker -->
+        <div class="stage dismiss-next-player">
+          <header>
+            <h2><span class="next-player"></span>, please leave the room.</h2>
+          </header>
+          <section>
+            <p>
+              <span class="current-player"></span>, you're going to set the two words that <span class="next-player"></span> will have to connect. 
+            </p>
+            <p>
+              It's nice to be nice, but try to make it challenging, too.
+            </p>
+          </section>
+          <footer>
+            <button class="advance set-players">YOU BET</button>
+          </footer>
+        </div>
+        <!-- Get first word from player -->
+        <div class="stage set-first-word">
+          <header>
+            <h2><span class="current-player"></span>, pick the word to start with.</h2>
+          </header>
+          <section>
+            <form class="vert-flex">
+              <div class="horiz-flex">
+                <label for="first-word">First Word</label>
+                <input placeholder="enter your word" required class="stretch" type="text" id="first-word">
+                <button>LOOK IT UP</button>
+              </div>
+            </form>
+            <div class="message"></div>
+            <div class="suggestions"></div>
+            <div class="selection"></div>
+          </section>
+          <footer>
+            <button disabled class="advance">LOCK IN FIRST WORD</button>
+          </footer>
+        </div>
+        <!-- Get last word from player  -->
+        <div class="stage set-last-word">
+          <header>
+            <h2><span class="current-player"></span>, pick the word to end on.</h2>
+          </header>
+          <section>
+            <form class="vert-flex">
+              <div class="horiz-flex">
+                <label for="last-word">Last Word</label>
+                <input placeholder="enter your word" required class="stretch" type="text" id="last-word">
+                <button>LOOK IT UP</button>
+              </div>
+            </form>
+            <div class="message"></div>
+            <div class="suggestions"></div>
+            <div class="selection"></div>
+          </section>
+          <footer>
+            <button disabled class="advance">LOCK IN LAST WORD</button>
+          </footer>
+        </div>
+        <!-- End of Stages -->
+      </div>
+      <main id="game">
+        <div id="word-chain"></div>
+      </main>
+    </div>
+  </body>
+</html>
